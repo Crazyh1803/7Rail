@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <Name value="7Rail" />
+    <DisplayName value="7Rail: EverRail in 7 Days to Die" />
+    <Version value="0.1.0" />
+    <Description value="EverRail's locomotive, wagons, sounds and train rules, read from your own EverRail (Demo) install, running on a railway across your 7 Days world." />
+    <Author value="Crazyh1803" />
+    <Website value="https://melty.gg" />
+</xml>

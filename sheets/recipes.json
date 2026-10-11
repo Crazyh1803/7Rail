@@ -1,0 +1,27 @@
+{
+  "sheet": "recipes",
+  "about": "7 Days recipes (recipes.xml) for the carriages, from 7 Days' own items. Crafted item = a placeable kit; Use it on the train to couple the car.",
+  "columns": [
+    "id",
+    "result_item",
+    "car",
+    "station",
+    "ingredients"
+  ],
+  "rows": [
+    {
+      "id": "rec_storage_wagon",
+      "result_item": "7railKitStorageWagon",
+      "car": "car_storage_wagon",
+      "station": "workbench",
+      "ingredients": "resourceForgedIron:50;resourceMechanicalParts:10;resourceMetalPipe:6"
+    },
+    {
+      "id": "rec_expedition_wagon",
+      "result_item": "7railKitExpeditionWagon",
+      "car": "car_expedition",
+      "station": "workbench",
+      "ingredients": "resourceForgedIron:60;resourceMechanicalParts:15;resourceMetalPipe:8"
+    }
+  ]
+}

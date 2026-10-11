@@ -1,0 +1,18 @@
+{
+  "sheet": "hooks",
+  "about": "Every place the mod touches 7 Days. api = exact member in V3.30 b18 Assembly-CSharp (checked in the decompile).",
+  "columns": ["id", "api", "when", "does"],
+  "rows": [
+    {"id": "hook_init", "api": "IModApi.InitMod(Mod)", "when": "game start", "does": "find EverRail cache (converter output); register events; Harmony.PatchAll"},
+    {"id": "hook_world_ready", "api": "ModEvents.GameStartDone", "when": "world loaded", "does": "build track spline from World.GetWorldExtent; load train state from save; spawn stalled locomotive if new"},
+    {"id": "hook_chunk_visible", "api": "ChunkCluster.OnChunkVisibleDelegates", "when": "chunk shown/hidden", "does": "create/destroy track mesh segments and clear the corridor for that chunk"},
+    {"id": "hook_update", "api": "ModEvents.GameUpdate", "when": "every frame", "does": "train physics along spline, player riding, input, zombie damage, sounds"},
+    {"id": "hook_input", "api": "EntityPlayerLocal.playerInput (PlayerActionsLocal.Activate/MoveForward/MoveBack/Jump)", "when": "in cab or looking at car", "does": "board/leave, throttle, brake, horn, refuel"},
+    {"id": "hook_hold_item", "api": "Inventory.holdingItemItemValue / holdingItemStack", "when": "Use on locomotive", "does": "identify fuel item and consume one"},
+    {"id": "hook_height", "api": "World.GetHeightAt(float,float)", "when": "track build", "does": "terrain height for the spline"},
+    {"id": "hook_player", "api": "World.GetPrimaryPlayer() + EntityPlayerLocal.SetPosition", "when": "riding", "does": "carry the player in the cab"},
+    {"id": "hook_save", "api": "GameIO.GetSaveGameDir() + ModEvents.WorldShuttingDown", "when": "save/quit", "does": "write 7rail_train.json next to the save"},
+    {"id": "hook_missing_everrail", "api": "GameManager.ShowTooltip(EntityPlayerLocal,string)", "when": "GameStartDone and no cache", "does": "tell the player EverRail Demo was not found / not converted, and where to get it"},
+    {"id": "hook_zombies", "api": "World.GetEntitiesInBounds(typeof(EntityZombie), Bounds, List<Entity>)", "when": "each 0.5 s", "does": "zombies at a car damage it"}
+  ]
+}

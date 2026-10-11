@@ -1,0 +1,13 @@
+# build output
+bin/
+obj/
+target/
+
+# decoded EverRail data from the probe tool: EverRail's own content, never committed
+converter/Probe/*.json
+converter/Probe/*.txt
+converter/Probe/out/
+
+# local scratch
+*.user
+.vs/

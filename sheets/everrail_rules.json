@@ -1,0 +1,139 @@
+{
+  "sheet": "everrail_rules",
+  "about": "EverRail's own train rules, read by the converter from the player's EverRail into rules.json. raw = the table's Default as stored (EverRail SI base units: N, W, Wh, t, km/h, s). The mod uses only these values; the per-row note says how. Values seen in Demo build 25656146 are listed for checking, never hard-coded.",
+  "columns": [
+    "id",
+    "source_table",
+    "source_field",
+    "seen_value",
+    "sevendays_use"
+  ],
+  "rows": [
+    {
+      "id": "rule_throttle_force",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.ThrottleToSpeedFactor.Default*Multiplier",
+      "seen_value": "30 x 1000 = 30000 N",
+      "sevendays_use": "pull force at full throttle, falling linearly to 0 at top speed"
+    },
+    {
+      "id": "rule_brake_force",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.BrakeStrength.Default",
+      "seen_value": "1250000 N",
+      "sevendays_use": "brake force (MoveBack)"
+    },
+    {
+      "id": "rule_wagon_mass",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.WagonMass.Default",
+      "seen_value": "30 t",
+      "sevendays_use": "mass of each car in tonnes (see rule_starting_wagons)"
+    },
+    {
+      "id": "rule_starting_wagons",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.StartingWagonCount.Default",
+      "seen_value": "10",
+      "sevendays_use": "train mass = rule_wagon_mass x (1 + rule_starting_wagons + coupled cars): the locomotive carries EverRail's full starting train weight"
+    },
+    {
+      "id": "rule_ideal_speed",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.IdealSpeedRange.Default",
+      "seen_value": "90 km/h",
+      "sevendays_use": "top speed = ideal speed x world_scale (72 km/h at 80%); also the speed band for charging"
+    },
+    {
+      "id": "rule_max_battery",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.MaxBattery.Default",
+      "seen_value": "6000000 Wh",
+      "sevendays_use": "locomotive battery capacity"
+    },
+    {
+      "id": "rule_base_energy",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.BaseEnergyUsage.Default",
+      "seen_value": "15000 W",
+      "sevendays_use": "drained all the time, scaled to the train's size: x cars / (1 + rule_starting_wagons), as EverRail's cost covers its 11-car starting train (TrainSimData.WagonsEnergyCost); a countdown shows when it runs out"
+    },
+    {
+      "id": "rule_drive_energy",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.SpeedToEnergyIncome.Default",
+      "seen_value": "16000 W",
+      "sevendays_use": "EverRail's charging: gained while moving, full at the ideal speed (75% of top speed) and falling to 0 at rule_ideal_speed x world_scale either side of it; nothing at a standstill"
+    },
+    {
+      "id": "rule_regen_brake",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.RegenerativeBrakingEnergy.Default",
+      "seen_value": "10000 W",
+      "sevendays_use": "energy back while braking"
+    },
+    {
+      "id": "rule_slope_down",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.RegenerativeSlopeEnergy.Default",
+      "seen_value": "500 W per degree",
+      "sevendays_use": "energy back per degree downhill"
+    },
+    {
+      "id": "rule_slope_up",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.DegenerativeSlopeEnergy.Default",
+      "seen_value": "500 W per degree",
+      "sevendays_use": "extra drain per degree uphill"
+    },
+    {
+      "id": "rule_derail_max",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.DerailTimerMax.Default",
+      "seen_value": "20 s",
+      "sevendays_use": "seconds above the curve speed limit before derailing (just over the limit)"
+    },
+    {
+      "id": "rule_derail_min",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.DerailTimerMin.Default",
+      "seen_value": "2 s",
+      "sevendays_use": "seconds before derailing when far over the limit"
+    },
+    {
+      "id": "rule_critical_energy",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.CriticalEnergyBatteryThreshold.Default",
+      "seen_value": "150000 Wh",
+      "sevendays_use": "low-energy warning on the HUD"
+    },
+    {
+      "id": "rule_iso_burn_rate",
+      "source_table": "tbl_isogen_l1",
+      "source_field": "ItemTrait_Attributes 'Iso per Second'.Value",
+      "seen_value": "100 Iso/s",
+      "sevendays_use": "with rule_iso_energy_rate gives energy per Iso"
+    },
+    {
+      "id": "rule_iso_energy_rate",
+      "source_table": "tbl_isogen_l1",
+      "source_field": "ItemTrait_Attributes 'Energy per Second'.Value",
+      "seen_value": "10 (display MW)",
+      "sevendays_use": "energy per Iso = this x 1e6 W / rule_iso_burn_rate = 100000 J per Iso"
+    },
+    {
+      "id": "rule_cell_capacity",
+      "source_table": "tbl_energy_storage",
+      "source_field": "CapacityPerCell",
+      "seen_value": "250000",
+      "sevendays_use": "battery added per energy cell: each Battery Bank built in a wagon room holds 4 cells"
+    },
+    {
+      "id": "rule_obstacle_damage",
+      "source_table": "tbl_train_balancing",
+      "source_field": "Rows.TrackObstacleLocomotiveDamageMultiplier.Default",
+      "seen_value": "1",
+      "sevendays_use": "the snow plow clears blocks fallen onto the line ahead; each costs the locomotive 2 HP x this"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>7rail-convert</AssemblyName>
+    <RootNamespace>SevenRail.Convert</RootNamespace>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\_tools\CUE4Parse\CUE4Parse\CUE4Parse.csproj" />
+    <ProjectReference Include="..\..\..\_tools\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\mappings\*.usmap" Link="mappings\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="..\..\..\_tools\vgmstream\bin\**\*" Link="vgmstream\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="GenSheets" BeforeTargets="BeforeBuild">
+    <Exec Command="py -I &quot;$(MSBuildProjectDirectory)\..\..\tools\gen_sheets.py&quot; SevenRail.Convert &quot;$(MSBuildProjectDirectory)\Generated\Sheets.g.cs&quot; everrail_assets everrail_rules layouts" />
+  </Target>
+</Project>
+

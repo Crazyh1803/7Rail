@@ -1,0 +1,58 @@
+{
+  "sheet": "train_cars",
+  "about": "Each car the player can have. meshes -> everrail_assets ids. length_m = EverRail size x world_scale (track sheet), measured from the decoded mesh bounds. layout = an EverRail blueprint (layouts sheet) the car is assembled from; its meshes are then placed with that layout's SM_GlazeEngine transform. start_count = cars the stalled train already has when found (the first wagon is the player's base). Power add-ons are not carriages: 7 Days' own Generator Bank and Battery Bank blocks built in a wagon room, and solar cells installed on the roof (power_sources).",
+  "columns": [
+    "id",
+    "name_key",
+    "layout",
+    "meshes",
+    "everrail_length_m",
+    "length_m",
+    "max_hp",
+    "power",
+    "unlock",
+    "recipe",
+    "start_count"
+  ],
+  "rows": [
+    {
+      "id": "car_locomotive",
+      "name_key": "7railLocomotive",
+      "layout": "lay_loco_exterior",
+      "meshes": "none",
+      "everrail_length_m": 52.5,
+      "length_m": 42.0,
+      "max_hp": 5000,
+      "power": "pow_fuel_tank",
+      "unlock": "found stalled on the ring near spawn",
+      "recipe": "none",
+      "start_count": 1
+    },
+    {
+      "id": "car_storage_wagon",
+      "name_key": "7railStorageWagon",
+      "layout": "none",
+      "meshes": "mesh_wagon_generic;mesh_wagon_connector",
+      "everrail_length_m": 39.1,
+      "length_m": 31.3,
+      "max_hp": 3000,
+      "power": "none",
+      "unlock": "workbench (empty, to build in)",
+      "recipe": "rec_storage_wagon",
+      "start_count": 0
+    },
+    {
+      "id": "car_expedition",
+      "name_key": "7railExpeditionWagon",
+      "layout": "none",
+      "meshes": "mesh_wagon_expedition;mesh_wagon_connector",
+      "everrail_length_m": 39.1,
+      "length_m": 31.3,
+      "max_hp": 3000,
+      "power": "none",
+      "unlock": "comes with the locomotive; more from a workbench. Its side door steps you off to the ground while the train is stopped",
+      "recipe": "rec_expedition_wagon",
+      "start_count": 1
+    }
+  ]
+}

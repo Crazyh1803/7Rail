@@ -1,0 +1,213 @@
+{
+  "sheet": "everrail_assets",
+  "about": "Every EverRail asset the converter reads from the player's own install. path = package path inside EverRail's paks (checked against the file list). out = file the converter writes under the cache. forward_axis = the mesh's long axis in EverRail (Unreal, cm, Z up); the converter rotates it to Unity +Z forward, Y up, metres. max_tris = simplification target for 7 Days. Textures come from each material slot's BaseColor parameter. forward_axis native = EverRail's own frame (placed by a layout's part transform).",
+  "columns": [
+    "id",
+    "kind",
+    "path",
+    "out",
+    "forward_axis",
+    "max_tris",
+    "used_by"
+  ],
+  "rows": [
+    {
+      "id": "mesh_wagon_generic",
+      "kind": "mesh",
+      "path": "EverRail/Content/Glaze/Wagons/WagonGeneric/Meshes/SM_Wagon_Generic",
+      "out": "meshes/wagon_generic.7rm",
+      "forward_axis": "+X",
+      "max_tris": 40000,
+      "used_by": "car_storage_wagon"
+    },
+    {
+      "id": "mesh_wagon_connector",
+      "kind": "mesh",
+      "path": "EverRail/Content/Glaze/Wagons/WagonGeneric/Meshes/SM_Wagon_Connector_Exterior",
+      "out": "meshes/wagon_connector.7rm",
+      "forward_axis": "+X",
+      "max_tris": 7752,
+      "used_by": "car_storage_wagon;car_expedition"
+    },
+    {
+      "id": "mesh_rail_module",
+      "kind": "mesh",
+      "path": "EverRail/Content/Glaze/Locomotive/BaseSkin/Meshes/SM_RailTracksModule_02",
+      "out": "meshes/rail_module.7rm",
+      "forward_axis": "+X",
+      "max_tris": 3890,
+      "used_by": "track_ring;track_branch"
+    },
+    {
+      "id": "snd_engine_start",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Engine_Ramp/A_0055_space_ship_start_up01",
+      "out": "sounds/engine_start.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_engine_start"
+    },
+    {
+      "id": "snd_engine_stop",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Engine_Ramp/A_0054_space_ship_shut_down01",
+      "out": "sounds/engine_stop.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_engine_stop;evt_out_of_fuel"
+    },
+    {
+      "id": "snd_engine_slow",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/FuturisticEngine/A_0020_train_engine_futuristic_synth_loop_medium01",
+      "out": "sounds/engine_slow.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_engine_loop"
+    },
+    {
+      "id": "snd_engine_fast",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/FuturisticEngine/A_0019_train_engine_futuristic_synth_loop_fast01",
+      "out": "sounds/engine_fast.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_engine_loop"
+    },
+    {
+      "id": "snd_rumble",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Low_Rumbling_Engine/A_0048_engine_low_rumble_loop01",
+      "out": "sounds/rumble.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_engine_loop"
+    },
+    {
+      "id": "snd_brake",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Brake/A_0065_train_brake_tin_squeal_medium01",
+      "out": "sounds/brake.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_brake"
+    },
+    {
+      "id": "snd_horn_start",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Horn/MetaSound/A_Horn_Start",
+      "out": "sounds/horn_start.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_horn"
+    },
+    {
+      "id": "snd_horn_loop",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Horn/MetaSound/A_Horn_Loop",
+      "out": "sounds/horn_loop.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_horn"
+    },
+    {
+      "id": "snd_horn_end",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Horn/MetaSound/A_Horn_End",
+      "out": "sounds/horn_end.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_horn"
+    },
+    {
+      "id": "snd_refuel",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Hydraulic/A_0136_hydraulic_motor_on01",
+      "out": "sounds/refuel.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_refuel"
+    },
+    {
+      "id": "snd_electric_hum",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Electricity/A_0129_electrical_hum01",
+      "out": "sounds/electric_hum.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_power_carriage"
+    },
+    {
+      "id": "snd_repair",
+      "kind": "sound",
+      "path": "EverRail/Content/Glaze/Train/Audio/Repair/A_0335_repair_train_metal_cranking01",
+      "out": "sounds/repair.wav",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "evt_repair"
+    },
+    {
+      "id": "tbl_train_balancing",
+      "kind": "table",
+      "path": "EverRail/Content/Glaze/Balancing/DT_CheatMenu_TrainBalancingValues",
+      "out": "rules.json",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "rules"
+    },
+    {
+      "id": "tbl_wagon_types",
+      "kind": "table",
+      "path": "EverRail/Content/Glaze/Wagons/Configuration/DT_WagonType_Core",
+      "out": "rules.json",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "rules"
+    },
+    {
+      "id": "tbl_energy_storage",
+      "kind": "table",
+      "path": "EverRail/Content/Glaze/Train/DA_EnergyStorageConfig",
+      "out": "rules.json",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "rules"
+    },
+    {
+      "id": "tbl_isofuel_burn",
+      "kind": "table",
+      "path": "EverRail/Content/Glaze/Train/BurnResourcesItem/GT_BurnResource_IsoFuel",
+      "out": "rules.json",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "rules"
+    },
+    {
+      "id": "tbl_isogen_l1",
+      "kind": "table",
+      "path": "EverRail/Content/Glaze/Items/Train/DA_Item_Train_IsoGenerator_L1",
+      "out": "rules.json",
+      "forward_axis": "n/a",
+      "max_tris": "n/a",
+      "used_by": "rules"
+    },
+    {
+      "id": "mesh_interior_door",
+      "kind": "mesh",
+      "path": "EverRail/Content/Glaze/Wagons/WagonGeneric/Meshes/SM_InteriorDoor",
+      "out": "meshes/native/SM_InteriorDoor.7rm",
+      "forward_axis": "native",
+      "max_tris": "26",
+      "used_by": "int_wagon"
+    },
+    {
+      "id": "mesh_wagon_expedition",
+      "kind": "mesh",
+      "path": "EverRail/Content/Glaze/Wagons/Expedition/Meshes/SM_Wagon_Expidition",
+      "out": "meshes/wagon_expedition.7rm",
+      "forward_axis": "+X",
+      "max_tris": "40000",
+      "used_by": "car_expedition"
+    }
+  ]
+}

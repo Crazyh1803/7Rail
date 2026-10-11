@@ -34,6 +34,54 @@ its power with 7 Days' own solar panels and gas generators.
 - No existing Melty mashup uses EverRail or puts a train in 7 Days. Owner has no Melty drafts yet.
 - The Melty connection token is NOT stored here. Get a fresh Publish prompt from Melty Studio for each new session.
 
+## Build session 2 findings (2026-10-08, on the owner's PC)
+- Installs: C:\Program Files (x86)\Steam\steamapps\common\7 Days To Die (V3.30 b18, Steam build 25661859, ships
+  Mods/0_TFP_Harmony) and ...\common\EverRail Demo (Steam app 4371260, build 25656146). EverRail Demo has no anti-cheat.
+- EverRail Demo: UE 5.6, IoStore utoc v8, flags 0x09 = compressed + indexed, NOT encrypted (zero key GUID). Oodle
+  compression: CUE4Parse decodes it with OodleSharp (MIT, managed); oozextract (MIT, Rust) kept as fallback in
+  native/ooz_ffi. Cooked with unversioned properties: CUE4Parse needs a .usmap mappings file (MappingException
+  without one). Audio is UE SoundWaves/MetaSounds, not FMOD banks.
+- EverRail's own content lives in Glaze/: locomotive Glaze/Locomotive/BaseSkin, wagons Glaze/Wagons (incl. a
+  Battery Wagon), train sounds Glaze/Train/Audio, fuel = IsoFuel (Glaze/Train/BurnResourcesItem).
+- 7 Days has no railways of its own: the mod lays the track. Hook APIs checked in the decompile (sheets/hooks.json).
+- Tooling (outside the repo): GitHub/_tools (CUE4Parse, universal-modder, Dumper-7, oozextract), decompile in
+  D:\Users\dwhit\7dtd-decomp, .NET 8 + 10 SDKs in %LOCALAPPDATA%\Microsoft\dotnet-sdk8 (set DOTNET_ROOT).
+- Sheets in sheets/*.json; `py -I tools/preflight.py --everrail-filelist <filelist> --sevendays <7DTD> --decomp <dir>`.
+  Open cells: EverRail rule fields and mesh lengths, all waiting on decoding (mappings).
+- BLOCKER: generating the .usmap means attaching Dumper-7 to a running EverRail Demo once on this PC. The agent's
+  safety check blocked the DLL injection; owner decision needed.
+
+## Build session 2: in-game test results and owner decisions (2026-10-08)
+- Owner chose: train at 40% of EverRail size; mappings via Dumper-7 attached once to EverRail Demo (done,
+  converter/mappings/EverRailDemo-25656146.usmap; EverRail is UE 5.7.4).
+- Working in game (V3.30, 7RailTest2 on Navezgane): railway (16 km ring + 6 spurs), EverRail rails on gravel
+  earthworks, EverRail locomotive, refuel with gas (EverRail battery fills), boarding + driving, HUD.
+- Owner's vision (2026-10-08): like EverRail, enter the engineer cab to drive; leave it running and walk around the
+  moving train; build inside and outside it like a huge moving base. Owner chose: prove 7 Days block building on
+  the train first (blocks become a model fixed to the wagon while moving, real blocks again when stopped); fall back
+  to placeable furniture if it can't be made reliable.
+- Order: balloon-loop spurs (no reversing) -> cab interior driving + walking on the moving train -> block-building
+  feasibility test.
+- Owner's other 7DTD mods (20) were moved to "7 Days To Die/Mods_disabled_by_7Rail_test" (list in moved.txt) for
+  testing: AcceleratedChunks33 breaks blocks.xml with EAC off. PUT THEM BACK when testing ends.
+- Testing needs the owner to click through menus (computer-use can't target the 7DTD window; driving input with
+  other tools was refused). Screenshots: tools/shot.ps1 (read-only capture). Console: 7rail goto | kit | status.
+
+## State at end of build session 2 (2026-10-08)
+- Owner-tested and working: railway (ring + balloon spurs, POI detours, tunnels, tree clearing, plow), cockpit
+  driving, EverRail energy loop + countdown, wagon rooms (build space, live windows), shelter aboard, add-ons
+  (roof solar panels, Generator Bank / Battery Bank built in a wagon), roof with guard rails.
+- Deployed but NOT yet tested: starting train = locomotive + EverRail Expedition Wagon; its side door lets you off
+  only while stopped (train then holds its brake); no beds/compartments (open build space); leaving the controls or
+  the last car's rear door takes you onto the roof and the train keeps running; Use on a roof climbs back down;
+  direct moves (no teleport screen) when chunks are loaded. Test in a NEW world (the starting train changed).
+- Owner idea to consider: windows as an option to build in, instead of always there.
+- Dev loop: `powershell -File tools/deploy.ps1` (add -NoConvert only when no sheet that the converter reads changed),
+  launch 7DaysToDie.exe -screen-fullscreen 0 -screen-width 1600 -screen-height 900; console: 7rail goto | kit | kits.
+- Still to do: restore the owner's 20 mods from Mods_disabled_by_7Rail_test; commit; Melty packaging
+  (converter publish + ownCopies prepare step), inspect/validate/one_click_check, listing text with the owner,
+  clean gameplay screenshot (pause menu shows in agent captures), publish only with the owner's OK.
+
 ## Next steps
 1. JSON design sheets (track, train cars, power sources, EverRail rules, game hooks); preflight before building.
 2. Inspect both installs: 7DTD version + Managed DLLs; EverRail Demo paks (engine version, encryption).

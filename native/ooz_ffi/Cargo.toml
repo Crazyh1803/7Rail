@@ -1,0 +1,17 @@
+﻿[package]
+name = "ooz_ffi"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "C ABI over oozextract (MIT) so the 7Rail converter can read Oodle-compressed Unreal containers"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+oozextract = { git = "https://github.com/lvlvllvlvllvlvl/oozextract", rev = "5ff5dc14be82160ab2c605dd844a46ba46e52d43" }
+
+[profile.release]
+opt-level = 3
+lto = true
+panic = "abort"

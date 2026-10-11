@@ -1,0 +1,78 @@
+{
+  "sheet": "power_sources",
+  "about": "How the train gets energy, EverRail's way: it charges while it moves (rule_drive_energy near its ideal speed) and drains all the time (rule_base_energy), so standing still empties it. 7 Days fuel only jump-starts a stalled locomotive (throttle_seconds x (rule_base_energy + rule_drive_energy) E per item); late-game add-ons are 7 Days' own Generator Bank and Battery Bank built inside a wagon room, and solar cells installed as panels on the train's roof.",
+  "columns": [
+    "id",
+    "kind",
+    "sevendays_item",
+    "throttle_seconds",
+    "output_e_per_s",
+    "consumes",
+    "condition"
+  ],
+  "rows": [
+    {
+      "id": "pow_fuel_tank",
+      "kind": "battery",
+      "sevendays_item": "fuel_gas;fuel_coal;fuel_oil",
+      "throttle_seconds": 0,
+      "output_e_per_s": "0",
+      "consumes": "rule_base_energy all the time; gains rule_drive_energy near ideal speed; slope and regen rules",
+      "condition": "capacity rule_max_battery"
+    },
+    {
+      "id": "fuel_gas",
+      "kind": "fuel_item",
+      "sevendays_item": "ammoGasCan",
+      "throttle_seconds": 1.0,
+      "output_e_per_s": "0",
+      "consumes": "1 item per Use",
+      "condition": "jump-start: holding it, press Use on the locomotive"
+    },
+    {
+      "id": "fuel_coal",
+      "kind": "fuel_item",
+      "sevendays_item": "resourceCoal",
+      "throttle_seconds": 0.5,
+      "output_e_per_s": "0",
+      "consumes": "1 item per Use",
+      "condition": "jump-start: holding it, press Use on the locomotive"
+    },
+    {
+      "id": "fuel_oil",
+      "kind": "fuel_item",
+      "sevendays_item": "resourceOil",
+      "throttle_seconds": 0.6,
+      "output_e_per_s": "0",
+      "consumes": "1 item per Use",
+      "condition": "jump-start: holding it, press Use on the locomotive"
+    },
+    {
+      "id": "pow_solar",
+      "kind": "roof",
+      "sevendays_item": "solarCell",
+      "throttle_seconds": 0,
+      "output_e_per_s": "rule_base_energy / 3 per installed cell by day",
+      "consumes": "nothing",
+      "condition": "from outside, holding a solar cell, Use on a car: a 7 Days solar panel goes on its roof (6 per car)"
+    },
+    {
+      "id": "pow_generator",
+      "kind": "room_block",
+      "sevendays_item": "generatorbank",
+      "throttle_seconds": 0,
+      "output_e_per_s": "rule_iso_energy_rate x 1000",
+      "consumes": "1 fuel from its own tank every 2 s (fill it with gas in 7 Days' own generator screen)",
+      "condition": "built in a wagon room and switched on"
+    },
+    {
+      "id": "pow_battery",
+      "kind": "room_block",
+      "sevendays_item": "batterybank",
+      "throttle_seconds": 0,
+      "output_e_per_s": "0",
+      "consumes": "nothing",
+      "condition": "built in a wagon room: + 4 x rule_cell_capacity battery"
+    }
+  ]
+}

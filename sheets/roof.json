@@ -1,0 +1,10 @@
+{
+  "sheet": "roof",
+  "about": "The train's roof: walkable while moving (the train carries a player standing on it), with guard rails so nobody falls off.",
+  "columns": ["id", "what", "value"],
+  "rows": [
+    {"id": "roof_rail_height", "what": "guard rail height above the roof (m)", "value": 1.2},
+    {"id": "roof_rail_inset", "what": "guard rail distance in from the roof edge (m)", "value": 0.3},
+    {"id": "roof_carry", "what": "a player standing on a car roof moves with the car each frame (position and turn)", "value": 1}
+  ]
+}

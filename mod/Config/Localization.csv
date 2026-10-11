@@ -1,0 +1,11 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english
+7railLocomotive,items,Item,,,"EverRail Locomotive"
+7railStorageWagon,items,Item,,,"EverRail Wagon"
+7railSolarCarriage,items,Item,,,"EverRail Solar Carriage"
+7railGeneratorCarriage,items,Item,,,"EverRail Generator Carriage"
+7railExpeditionWagon,items,Item,,,"EverRail Expedition Wagon"
+7railBatteryWagon,items,Item,,,"EverRail Battery Wagon"
+7railKitStorageWagon,items,Item,,,"EverRail Wagon kit"
+7railKitStorageWagonDesc,items,Item,,,"EverRail's generic wagon. Hold it and press Use beside the stopped EverRail train to couple it."
+7railKitExpeditionWagon,items,Item,,,"EverRail Expedition Wagon kit"
+7railKitExpeditionWagonDesc,items,Item,,,"EverRail's Expedition Wagon: its side door lets you step off the train to the ground. Hold it and press Use beside the stopped EverRail train to couple it."

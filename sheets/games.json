@@ -1,0 +1,9 @@
+{
+  "sheet": "games",
+  "about": "The games in the mashup and how each one is really in it.",
+  "columns": ["id", "melty_slug", "role", "engine", "version_tested", "install_found_by", "brings"],
+  "rows": [
+    {"id": "sevendays", "melty_slug": "7-days-to-die", "role": "primary", "engine": "Unity 2022.3 Mono", "version_tested": "V3.30 b18 (Steam build 25661859)", "install_found_by": "Melty passes {game}", "brings": "the world, player, zombies, biomes, POIs, items (gas, coal, oil, solar cells, generator parts), day/night and blood moons"},
+    {"id": "everrail", "melty_slug": "custom-everrail", "role": "secondary", "engine": "Unreal 5.6, IoStore, Oodle, unversioned properties", "version_tested": "EverRail Demo (Steam app 4371260, build 25656146)", "install_found_by": "Melty ownCopies disc match on EverRail/Content/Paks/EverRail-Windows.utoc (Steam libraryfolders.vdf fallback in the mod)", "brings": "locomotive and wagon models + textures, train sounds, train rules (fuel, speed, wagons) via the converter"}
+  ]
+}

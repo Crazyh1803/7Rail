@@ -1,0 +1,41 @@
+{
+  "sheet": "layouts",
+  "about": "EverRail blueprints whose parts (static meshes with their exact transforms) and named spots the converter reads from the player's EverRail into layouts/<id>.json; every mesh they use is exported in EverRail's own frame to meshes/native/. spots = the blueprint's own scene/interaction components the mod uses. Parts EverRail hides by default (bVisible false / bHiddenInGame, e.g. damage debris) are left out. show = meshes EverRail hides by default but switches on in play (the cockpit, shown by BP_CockpitVisibilityComponent when you're inside); always included. A spot with a box (FloorGridVolumeComponent) also carries its size. blueprint may list several ';'-separated blueprints sharing one frame (a child blueprint after its parent, as EverRail's PassengerUnit_Small inherits PassengerUnit_Base).",
+  "columns": [
+    "id",
+    "blueprint",
+    "used_by",
+    "spots",
+    "show"
+  ],
+  "rows": [
+    {
+      "id": "lay_loco_exterior",
+      "blueprint": "EverRail/Content/WSMGameStudio/TrainController/FreightTrain/Blueprints/BP_Locomotive_01",
+      "used_by": "car_locomotive",
+      "spots": "SeatEnter_GEN_VARIABLE;ExitCockpitInteraction",
+      "show": "SM_LocomotiveCockpit"
+    },
+    {
+      "id": "lay_wagon_interior",
+      "blueprint": "EverRail/Content/Glaze/Train/SwitchingWagons/BP_InteriorWagon",
+      "used_by": "int_wagon",
+      "spots": "Lift01_GEN_VARIABLE;Lift02_GEN_VARIABLE;FloorGridVolumeComponent_GEN_VARIABLE",
+      "show": "none"
+    },
+    {
+      "id": "lay_wagon_connector",
+      "blueprint": "EverRail/Content/Glaze/Train/SwitchingWagons/BP_NewWagonConnector",
+      "used_by": "int_wagon",
+      "spots": "none",
+      "show": "none"
+    },
+    {
+      "id": "lay_passenger_unit",
+      "blueprint": "EverRail/Content/Glaze/InteriorProps/Passenger/Blueprints/BP_Building_PassengerUnit_Base;EverRail/Content/Glaze/InteriorProps/Passenger/Blueprints/BP_Building_PassengerUnit_Small",
+      "used_by": "int_wagon",
+      "spots": "none",
+      "show": "none"
+    }
+  ]
+}

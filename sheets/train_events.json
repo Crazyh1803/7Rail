@@ -1,0 +1,90 @@
+{
+  "sheet": "train_events",
+  "about": "What happens in play and which EverRail sound plays.",
+  "columns": [
+    "id",
+    "trigger",
+    "effect",
+    "sounds"
+  ],
+  "rows": [
+    {
+      "id": "evt_engine_start",
+      "trigger": "throttle above 0 with energy > 0",
+      "effect": "train starts moving",
+      "sounds": "snd_engine_start"
+    },
+    {
+      "id": "evt_engine_loop",
+      "trigger": "moving",
+      "effect": "loop; crossfade slow->fast with speed",
+      "sounds": "snd_engine_slow;snd_engine_fast;snd_rumble"
+    },
+    {
+      "id": "evt_engine_stop",
+      "trigger": "throttle to 0 and stopped",
+      "effect": "",
+      "sounds": "snd_engine_stop"
+    },
+    {
+      "id": "evt_out_of_fuel",
+      "trigger": "energy reaches 0",
+      "effect": "train coasts to a stop; tooltip 'Out of fuel'",
+      "sounds": "snd_engine_stop"
+    },
+    {
+      "id": "evt_brake",
+      "trigger": "brake key (MoveBack) while moving",
+      "effect": "decelerate",
+      "sounds": "snd_brake"
+    },
+    {
+      "id": "evt_horn",
+      "trigger": "horn key (Jump) in the cab",
+      "effect": "horn; zombies within 40 m hear it (world.aiDirector noise)",
+      "sounds": "snd_horn_start;snd_horn_loop;snd_horn_end"
+    },
+    {
+      "id": "evt_refuel",
+      "trigger": "Use on locomotive holding a fuel item",
+      "effect": "consume 1 item, add energy",
+      "sounds": "snd_refuel"
+    },
+    {
+      "id": "evt_power_carriage",
+      "trigger": "solar/generator carriage producing",
+      "effect": "adds energy each second",
+      "sounds": "snd_electric_hum"
+    },
+    {
+      "id": "evt_repair",
+      "trigger": "Use on a car holding a repair tool (meleeToolRepairT0StoneAxe / meleeToolRepairT1ClawHammer)",
+      "effect": "+250 HP per Use, costs 1 resourceForgedIron",
+      "sounds": "snd_repair"
+    },
+    {
+      "id": "evt_zombie_attack",
+      "trigger": "zombie within 2 m of a car",
+      "effect": "each zombie touching a car takes 10 HP/s from it; at 0 HP the car is wrecked and the train cannot move until repaired",
+      "sounds": "snd_repair"
+    },
+    {
+      "id": "evt_energy_countdown",
+      "trigger": "energy falling (stopped or too slow)",
+      "effect": "HUD countdown to empty; at 0 the train stalls and its heating fails (no shelter aboard)",
+      "sounds": "snd_electric_hum"
+    },
+    {
+      "id": "evt_obstacle",
+      "trigger": "terrain or rubble in the train's path ahead (fallen rock, missed spots)",
+      "effect": "EverRail's snow plow clears it; locomotive loses rule_obstacle_damage x 2 HP per block",
+      "sounds": "snd_brake"
+    },
+    {
+      "id": "evt_step_outside",
+      "trigger": "the player steps off through the Expedition Wagon's side door (allowed only while stopped)",
+      "effect": "the train stays braked until someone takes the controls",
+      "sounds": "snd_brake"
+    }
+  ]
+}

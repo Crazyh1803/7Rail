@@ -1,0 +1,38 @@
+{
+  "sheet": "interiors",
+  "about": "Inside the train, as EverRail does it: the locomotive is driven from its real cockpit (BP_Locomotive_01 SeatEnter on the moving train); each wagon's interior is a fixed room in the 7 Days world, out of sight underground, built from EverRail's interior blueprint. The room is exactly EverRail's own building floor (the wagon's FloorGridVolumeComponent, walk_mesh) at world_scale, floored and walled with unbreakable shell_block just outside EverRail's walls, so building there is plain 7 Days on EverRail's grid. The train keeps running outside while the player is in a room. The room is scaled so EverRail's 6 m build grid lands on whole 7 Days blocks (5 m: scale 5/6 instead of 0.8), so the block walls sit exactly at EverRail's walls; EverRail's interior door (mesh_interior_door) marks both ends. lining_block = the inner layer of the room's shell (what shows in EverRail's floor gaps and at the ends; breaking it only reveals the unbreakable shell_block). windows = live windows per side in the free half: a camera on the real moving wagon shows the 7 Days world outside.",
+  "columns": [
+    "id",
+    "car",
+    "layout",
+    "pocket_anchor",
+    "walk_mesh",
+    "extra_parts",
+    "shell_block",
+    "lining_block",
+    "ends",
+    "furnishing",
+    "windows",
+    "light_spacing_m",
+    "enter",
+    "leave"
+  ],
+  "rows": [
+    {
+      "id": "int_wagon",
+      "car": "car_storage_wagon;car_expedition",
+      "layout": "lay_wagon_interior",
+      "pocket_anchor": "underground below the world centre (x 0, z 0), floor at y 12; one room per wagon in a row, 60 m apart",
+      "walk_mesh": "FloorGridVolumeComponent",
+      "extra_parts": "none",
+      "shell_block": "terrBedrock",
+      "lining_block": "steelShapes:cube",
+      "ends": "lay_wagon_connector",
+      "furnishing": "none: every wagon is open build space",
+      "windows": 3,
+      "light_spacing_m": 8,
+      "enter": "from the cockpit: Use on 'Leave the controls'; from outside: Use on the wagon; front end (Lift02): forward to the car in front (the cockpit for the first wagon)",
+      "leave": "rear end of the last car: up onto the roof (guard rails; the train keeps running); the Expedition Wagon's side door: step off to the ground, only while the train is stopped (it then stays braked until someone takes the controls); from the roof, Use over a car climbs back down into it (the cockpit over the locomotive)"
+    }
+  ]
+}
